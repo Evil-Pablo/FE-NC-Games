@@ -1,12 +1,21 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import ArticleCard from './ArticleCard'
+import FilterTopics from './FilterTopics';
+import {useParams} from 'react-router-dom'
 
 function ArticleList() {
   const [articles, setArticles] = useState([]); 
+
+  const {topic} = useParams();
    
  function displayArticles() {
-     axios.get('https://nc-news-example-1.herokuapp.com/api/articles').then((res)=>{
+     let API_string = 'https://nc-news-example-1.herokuapp.com/api/articles';
+     if (topic) {
+         API_string += `?topic=${topic}`;
+     }
+     
+     axios.get(API_string).then((res)=>{
          setArticles(res.data.articles)
          console.log(res.data.articles,'<<<<ARTICLELIST')
      })
@@ -14,11 +23,12 @@ function ArticleList() {
  
     useEffect(()=>{
      displayArticles();
- }, []);
+ }, [topic]);
 
     return (
         <div>
             <section className="articleList">
+                <FilterTopics />
 <h2>Here are the latest articles:</h2>
 <ul>
     {articles.map((article)=>{
