@@ -23,15 +23,25 @@ function SingleArticle () {
             <h3>Author: {article.author}</h3>
             <p>{article.body}</p>
             <h3>Votes: {article.votes+vote}</h3>
-            <button onClick={(e)=>{setVote((currentVote)=>currentVote+1)
+            <div className='voteButtons'>
+            <button className='vote' onClick={(e)=>{setVote((currentVote)=>currentVote+1)
                 axios.patch(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`,{inc_votes: 1})
                 .catch((err)=>{setVote((currentVote)=>currentVote-1)})
                 setErr('Sorry, something went wrong. Please vote again.')
                 if (err) return <p>{err}</p>;
-              
-            }}>Vote</button>
+                
+            }}>👍</button>
+            <button className='vote' onClick={(e)=>{setVote((currentVote)=>currentVote-1)
+                axios.patch(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`,{inc_votes: 1})
+                .catch((err)=>{setVote((currentVote)=>currentVote+1)})
+                setErr('Sorry, something went wrong. Please vote again.')
+                if (err) return <p>{err}</p>;
+                
+            }}>👎</button>
+            </div>
         </section>
     )
 }
 
 export default SingleArticle
+
