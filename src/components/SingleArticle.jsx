@@ -6,32 +6,31 @@ import {useState, useEffect} from 'react'
 function SingleArticle () {
     const {article_id} = useParams();
     const [article, setArticle] = useState({});
-    const articleCopy = article
-    console.log(articleCopy,'<<<<Single Article')
-
-    function displayArticle() {
-
-    }
+    const [vote, setVote] = useState(0);
+    const [err, setErr] = useState(null)
 
     useEffect(()=>{
         axios.get(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`).then((res)=>{
             setArticle(res.data.article)
 
     })
-    }, [article_id]);
+    }, []);
 
     return (
-        <div className='singleArticleCard'>
+        <section className='singleArticleCard'>
             <h2>Title: {article.title}</h2>
             <h3>Topic: {article.topic}</h3>
             <h3>Author: {article.author}</h3>
             <p>{article.body}</p>
-            <h3>Vote: {article.votes}</h3><button onClick={(e)=>{
-                axios.patch(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`,{votes: 1}).then(
-
-                )
+            <h3>Votes: {article.votes+vote}</h3>
+            <button onClick={(e)=>{setVote((currentVote)=>currentVote+1)
+                axios.patch(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`,{inc_votes: 1})
+                .catch((err)=>{setVote((currentVote)=>currentVote-1)})
+                setErr('Sorry, something went wrong. Please vote again.')
+                if (err) return <p>{err}</p>;
+              
             }}>Vote</button>
-        </div>
+        </section>
     )
 }
 
