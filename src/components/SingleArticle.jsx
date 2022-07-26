@@ -9,18 +9,17 @@ function SingleArticle () {
 
     useEffect(()=>{
         axios.get(`https://nc-news-example-1.herokuapp.com/api/articles/${article_id}`).then((res)=>{
-            console.log(res, '<<<single article')
             setArticle(res.data.article)
 
     })
     }, [article_id]);
 
     return (
-        <div>
-            <h2>{article.title}</h2>
-            <h3>{article.topic}</h3>
-            <h3>{article.author}</h3>
-            <h3>{article.created_at}</h3>
+        <div className='singleArticleCard'>
+            <h2>Title: {article.title}</h2>
+            <h3>Topic: {article.topic}</h3>
+            <h3>Author: {article.author}</h3>
+            <h3>Created: {article.created_at}</h3>
         </div>
     )
 }
