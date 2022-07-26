@@ -44,3 +44,13 @@ li {
 }
 
 
+.singleArticleCard {
+  background-color: lavender;
+  border-style: solid;
+  margin: 20px;
+  padding: 10px;
+  display:flex;
+  align-items: center;
+  flex-flow: column;
+  border-radius: 5%;
+}
