@@ -1,6 +1,7 @@
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useState, useEffect} from 'react'
+
 
 
 function SingleArticle () {
@@ -49,6 +50,9 @@ function SingleArticle () {
             <h3>Topic: {article.topic}</h3>
             <h3>Author: {article.author}</h3>
             <p>{article.body}</p>
+            <Link to={`/article/${article.article_id}/comments`}>
+            <h3>Comments: {article.comment_count}</h3>
+            </Link>
             <h3>Votes: {article.votes+vote}</h3>
             <div className='voteButtons'>
             <button 

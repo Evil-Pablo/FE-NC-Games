@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
 import Home from "./components/Home";
 import SingleArticle from "./components/SingleArticle";
+import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/articles" element={<ArticleList />} />
           <Route path="/articles/:topic" element={<ArticleList />} />
           <Route path="/article/:article_id" element={<SingleArticle />} />
+          <Route path="/article/:article_id/comments" element={<Comments />} />
         </Routes>
       </div>
     </BrowserRouter>
