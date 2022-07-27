@@ -63,3 +63,17 @@ height: 50px;
 align-items: center;
 font-size:xx-large
 }
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-style: hidden;
+  border-radius: 5%;
+}
+
+table, th {
+  padding: 0.5rem;
+  border: 5px solid rgb(46, 46, 86);
+  border-radius: 5%;
+}
+

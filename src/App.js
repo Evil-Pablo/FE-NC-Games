@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
@@ -8,6 +9,8 @@ import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
 
 function App() {
+  const [article, setArticle] = useState({});
+
   return (
     <BrowserRouter>
       <div>
@@ -17,8 +20,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/articles" element={<ArticleList />} />
           <Route path="/articles/:topic" element={<ArticleList />} />
-          <Route path="/article/:article_id" element={<SingleArticle />} />
-          <Route path="/article/:article_id/comments" element={<Comments />} />
+          <Route
+            path="/article/:article_id"
+            element={
+              <SingleArticle article={article} setArticle={setArticle} />
+            }
+          />
+          <Route
+            path="/comments/:article_id"
+            element={<Comments article={article} setArticle={setArticle} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
