@@ -11,9 +11,6 @@ function SingleArticle () {
     const [level, setLevel] = useState(1)
     const [count, setCount] = useState(0)
 
-console.log(count,'<<<COUNT')
-console.log(vote,'<<<VOTE')
-
     const voteHandler = (e) => {
         let incVote = 1
         if (e.target.id === 'down') incVote = -1;
