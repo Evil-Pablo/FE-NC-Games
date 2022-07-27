@@ -17,7 +17,6 @@ function ArticleList() {
      
      axios.get(API_string).then((res)=>{
          setArticles(res.data.articles)
-         console.log(res.data.articles)
      })
  }
  
@@ -40,6 +39,7 @@ function ArticleList() {
                 topic={article.topic}
                 author={article.author}
                 created_at={article.created_at}
+                votes={article.votes}
                 />
             </li>
         )
