@@ -43,5 +43,3 @@ function AddComment({setComments}) {
 }
 
 export default AddComment
-
-<a href=""></a>
