@@ -3,7 +3,10 @@ function CommentCard(comment) {
     return(
        
             <p>
-             Comment ID {comment.comment_id}: {comment.body}
+             Username: {comment.author}
+             <br />
+             <br />
+             {comment.body}
             </p>
       
     )
