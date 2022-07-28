@@ -1,7 +1,6 @@
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-import SingleArticle from './SingleArticle'
 import CommentCard from './CommentCard'
 
 function Comments ({article, setArticle}) {
@@ -28,19 +27,22 @@ function Comments ({article, setArticle}) {
             <h2>Title: {article.title}</h2>
             <h3>Author: {article.author}</h3>
            <div>
-               <table>
-                   <tr>
-                       <th>Comments:</th>
-                   </tr>
+               <ul>
+                   
+                       <h2>Comments:</h2>
+                   
                    {comments.map((comment)=>{
                        return (
-                           <tr key={comment.comment_id}>
+                           <li
+                           className='comment'
+                           key={comment.comment_id}>
                                <CommentCard
-                               body={comment.body} />
-                           </tr>
+                               body={comment.body}
+                               comment_id={comment.comment_id} />
+                           </li>
                        )
                    })}
-               </table>
+               </ul>
            </div>
          
         </section>

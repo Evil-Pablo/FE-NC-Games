@@ -2,9 +2,9 @@ function CommentCard(comment) {
 
     return(
        
-            <tr>
-                {comment.body}
-            </tr>
+            <p>
+             Comment ID {comment.comment_id}: {comment.body}
+            </p>
       
     )
 }
