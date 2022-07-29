@@ -7,31 +7,37 @@ import ArticleList from "./components/ArticleList";
 import Home from "./components/Home";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
+import { UserContext } from "./User";
+import SelectUser from "./components/SelectUser";
 
 function App() {
   const [article, setArticle] = useState({});
+  const [user, setUser] = useState({});
 
   return (
     <BrowserRouter>
-      <div>
-        <Navigation />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/articles" element={<ArticleList />} />
-          <Route path="/articles/:topic" element={<ArticleList />} />
-          <Route
-            path="/article/:article_id"
-            element={
-              <SingleArticle article={article} setArticle={setArticle} />
-            }
-          />
-          <Route
-            path="/comments/:article_id"
-            element={<Comments article={article} setArticle={setArticle} />}
-          />
-        </Routes>
-      </div>
+      <UserContext.Provider value={{ user, setUser }}>
+        <div>
+          <Navigation />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/articles" element={<ArticleList />} />
+            <Route path="/articles/:topic" element={<ArticleList />} />
+            <Route
+              path="/article/:article_id"
+              element={
+                <SingleArticle article={article} setArticle={setArticle} />
+              }
+            />
+            <Route
+              path="/comments/:article_id"
+              element={<Comments article={article} setArticle={setArticle} />}
+            />
+            <Route path="/users" element={<SelectUser />} />
+          </Routes>
+        </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
