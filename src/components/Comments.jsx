@@ -36,6 +36,7 @@ function Comments ({article, setArticle}) {
                            className='comment'
                            key={comment.comment_id}>
                                <CommentCard
+                               comment={comment}
                                setComments={setComments}
                                article_id={article_id}
                                body={comment.body}
