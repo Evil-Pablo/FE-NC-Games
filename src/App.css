@@ -82,3 +82,10 @@ font-size:xx-large
   background-color: #f8f8f8;
   resize: none;
 }
+
+.deleteComment {
+  display:flex;
+  align-items: center;
+  margin: 10px;
+  flex-direction: column;
+}
